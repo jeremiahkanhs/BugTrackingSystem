@@ -202,7 +202,7 @@ ul.timeline > li:before {
 								%>
 								
 							</ul>
-							<textarea id="commentdescription" name="commentdescription" class="form-control" rows="5"></textarea>
+							<textarea id="commentdescription" name="commentdescription" class="form-control" rows="5" required></textarea>
 						</div>
 					</div>
 					
