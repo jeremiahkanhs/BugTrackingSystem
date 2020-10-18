@@ -32,7 +32,10 @@ public class LoginController extends HttpServlet{
 			HttpSession session = request.getSession();
 			session.setAttribute("sessionID", userName);
 			session.setAttribute("roleId", u.getUserRole().getRoleId());
-			request.getRequestDispatcher("home.jsp").forward(request, response);
+			if (u.getUserRole().getRoleId() != 191)
+				request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+			else
+				request.getRequestDispatcher("adminpanel.jsp").forward(request, response);
 		}
 		
 	}

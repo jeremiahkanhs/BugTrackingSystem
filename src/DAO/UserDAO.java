@@ -10,6 +10,7 @@ public interface UserDAO {
 	public List <User> getAllUsers();
 	public User getUser(String username, String password);
 	public User getUser(String username);
+	public User getUser(int userId);
 	public void updateUser (User u);
 	public void deleteUser (String username);
 }

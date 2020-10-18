@@ -88,6 +88,27 @@ public class UserDAOImpl implements UserDAO {
 		u.setUserRole(r);
 		return u;
 	}
+	
+	@Override
+	public User getUser(int userId) {
+		User u = new User();
+		try {
+			con = MyConnectionProvider.getCon();
+			ps = con.prepareStatement("select * from users where user_id = ?");
+			ps.setInt(1, userId);
+			
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				u.setFirstName(rs.getString(5));
+				u.setLastName(rs.getString(6));
+			}
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return u;
+	}
 
 	@Override
 	public void updateUser(User u) {

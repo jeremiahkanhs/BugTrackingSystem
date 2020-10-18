@@ -15,7 +15,7 @@
 
 	if (sessionVal != 191) {
 		request.setAttribute("errorMessage", "You do not have admin access");
-		request.getRequestDispatcher("home.jsp").forward(request, response);
+		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
 %>
 </head>
