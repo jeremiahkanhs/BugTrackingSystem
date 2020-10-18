@@ -121,13 +121,13 @@ td {
 				    			<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
 			    						<label>Last Name : </label>
-			    						<input id="input3" type="text" name="lastName" class="form-control input-sm">
+			    						<input id="input3" type="text" name="lastName" class="form-control input-sm" required>
 			    					</div>
 		    					</div>
 		    					<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
 					    				<label>First Name : </label>
-					    				<input id="input2" type="text" name="firstName" class="form-control input-sm">
+					    				<input id="input2" type="text" name="firstName" class="form-control input-sm" required>
 					    			</div>
 		    					</div>
 	    					</div>
@@ -136,14 +136,14 @@ td {
 		    					<div class="col-xs-12 col-sm-12 col-md-12">
 			    					<div class="form-group">
 			    						<label>Email : </label>
-			    						<input id="input4" type="text" name="emailAddress" class="form-control input-sm">
+			    						<input id="input4" type="text" name="emailAddress" class="form-control input-sm" required>
 			    					</div>
 		    					</div>
 	    					</div>
 		    					
 	    					<div class="form-group">
 	    					<label>User Role : </label>
-	    						<select id="input5" name="userRole" class="form-control input-sm">
+	    						<select id="input5" name="userRole" class="form-control input-sm" required>
 									<option value="System Administrator">System Administrator</option>
 									<option value="Bug Reporter">Bug Reporter</option>
 									<option value="Triager">Triager</option>

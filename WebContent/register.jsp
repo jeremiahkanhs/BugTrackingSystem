@@ -33,33 +33,33 @@
 			    			<div class="row">
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
-			                <input type="text" name="firstName" id="first_name" class="form-control input-sm" placeholder="First Name">
+			                <input type="text" name="firstName" id="first_name" class="form-control input-sm" placeholder="First Name" required>
 			    					</div>
 			    				</div>
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
-			    						<input type="text" name="lastName" id="last_name" class="form-control input-sm" placeholder="Last Name">
+			    						<input type="text" name="lastName" id="last_name" class="form-control input-sm" placeholder="Last Name" required>
 			    					</div>
 			    				</div>
 			    			</div>
 
 			    			<div class="form-group">
-			    				<input type="email" name="emailAddress" id="email" class="form-control input-sm" placeholder="Email Address">
+			    				<input type="email" name="emailAddress" id="email" class="form-control input-sm" placeholder="Email Address" required>
 			    			</div>
 			    			<div class="row">
 				    			<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
-			    						<input type="text" name="username" id="username" class="form-control input-sm" placeholder="Username">
+			    						<input type="text" name="username" id="username" class="form-control input-sm" placeholder="Username" required>
 			    					</div>
 		    					</div>
 		    					<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
-			    						<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+			    						<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" required>
 			    					</div>
 		    					</div>
 	    					</div>
 	    					<div class="form-group">
-	    						<select name="userRole" id="userRole" class="form-control input-sm">
+	    						<select name="userRole" id="userRole" class="form-control input-sm" required>
 	    							<option value="" disabled selected>Select User Role</option>
 									<option value="System Administrator">System Administrator</option>
 									<option value="Bug Reporter">Bug Reporter</option>

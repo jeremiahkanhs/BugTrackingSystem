@@ -88,7 +88,7 @@ ul.timeline > li:before {
 	                    <div class="col-md-4 col-lg-4">
 	                        <div class="form-group">
 	                            <label class="control-label">Severity</label>
-	                            <select id="bugseverity" name="bugseverity" class="form-control">
+	                            <select id="bugseverity" name="bugseverity" class="form-control" required>
 								  <option value="1">1</option>
 								  <option value="2">2</option>
 								  <option value="3">3</option>
@@ -98,13 +98,13 @@ ul.timeline > li:before {
 	                    <div class="col-md-4 col-lg-4">
 	                        <div class="form-group">
 	                            <label class="control-label">Title</label>
-	                            <input id="bugtitle" name="bugtitle" type="text" class="form-control" />
+	                            <input id="bugtitle" name="bugtitle" type="text" class="form-control" / required>
 	                        </div>
 	                    </div>
 	                    <div class="col-md-4 col-lg-4">
 	                        <div class="form-group">
 	                            <label class="control-label">Assigner</label>
-	                            <select id="bugassigner" name="bugassigner" class="form-control">
+	                            <select id="bugassigner" name="bugassigner" class="form-control" required>
 	                            <option value="" selected disabled hidden>Select Assigner</option>
 	                            <%
 	                            	try {
@@ -130,7 +130,7 @@ ul.timeline > li:before {
 	                    <div class="col-md-8 col-lg-8">
 	                        <div class="form-group">
 	                            <label class="control-label">Description</label>
-	                            <textarea id="bugdescription" name="bugdescription" class="form-control" rows="5"></textarea>
+	                            <textarea id="bugdescription" name="bugdescription" class="form-control" rows="5" required></textarea>
 	                        </div>
 	                    </div>
 	                    <div class="col-md-4 col-lg-4">
@@ -138,7 +138,7 @@ ul.timeline > li:before {
 			                    <div class="col-md-12 col-lg-12">
 			                        <div class="form-group">
 			                            <label class="control-label">Assignee</label>
-			                            <select id="bugassignee" name="bugassignee" class="form-control">
+			                            <select id="bugassignee" name="bugassignee" class="form-control" required>
 			                            	<option value="" selected disabled hidden>Select Assignee</option>
 			                            <%
 			                            	try {
@@ -163,7 +163,7 @@ ul.timeline > li:before {
 			                    <div class="col-md-12 col-lg-12">
 			                        <div class="form-group">
 			                            <label class="control-label">Current Status</label>
-			                            <select id="bugstatus" name="bugstatus" class="form-control">
+			                            <select id="bugstatus" name="bugstatus" class="form-control" required>
 										  <option value="open">Open</option>
 										  <option value="closed">Closed</option>
 										</select>
@@ -202,7 +202,7 @@ ul.timeline > li:before {
 								%>
 								
 							</ul>
-							<textarea id="commentdescription" name="commentdescription" class="form-control" rows="5" required></textarea>
+							<textarea id="commentdescription" name="commentdescription" class="form-control" rows="5"></textarea>
 						</div>
 					</div>
 					
