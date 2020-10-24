@@ -48,11 +48,12 @@ public class UserDAOImpl implements UserDAO {
 			
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				u.setUsername(rs.getString(1));
-				u.setPassword(rs.getString(2));
+				System.out.println (rs.getString(2) + " " + rs.getString(3));
+				u.setUsername(rs.getString(2));
+				u.setPassword(rs.getString(3));
 				r.setRoleId(Integer.parseInt(rs.getString(4)));
-				r.setRoleName(rs.getString(6));
-				r.setRoleDesc(rs.getString(7));
+				r.setRoleName(rs.getString(9));
+				r.setRoleDesc(rs.getString(10));
 			}
 			con.close();
 		} catch (Exception e) {

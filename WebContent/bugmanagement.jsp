@@ -209,7 +209,12 @@ ul.timeline > li:before {
 					<div class="row">
 					    <div class="col-lg-12">
 					        <div class="pull-right">
+					        <%if(request.getParameter("bugId")==null){ %>
 					            <input style="margin-top:5px"class="btn btn-success btn-lg" type="submit" id="btnSubmit" value="Report Bug"/>
+					        <%} else { %>
+					        	<input id="bugid" name="bugid" type="hidden" value="<%=request.getParameter("bugId")%>"/>
+					        	<input style="margin-top:5px"class="btn btn-success btn-lg" type="submit" id="btnSubmit" value="Save"/>
+					        <%} %>
 					        </div>
 					    </div>
 					</div>
@@ -236,16 +241,26 @@ if(request.getParameter("bugId")!=null){
 		$("#bugseverity").val('<%=bugseverity%>');
 		$("#bugtitle").val('<%=bugtitle%>');
 		$("#bugassigner").val('<%=bugassigner%>');
+		<% if (bugassignee != 9999){%>
 		$("#bugassignee").val('<%=bugassignee%>');
+		<%}%>
 		$("#bugstatus").val('<%=bugstatus%>');
 		$("#bugdescription").val('<%=bugdescription%>');
 	});
 </script>
 <%
-}
-
-
+} else {
 %>
+<script>
+	$(document).ready(function(){
+		$("#bugassignee").attr('disabled','disabled');
+	});
+</script>
+<%
+}
+%>
+
+
 
 
    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>

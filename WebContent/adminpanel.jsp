@@ -153,7 +153,7 @@ td {
 	    					</div>
 			    			<input  type="submit" name="submit" value="Edit" class="btn btn-info btn-block">
 							<input type="submit" name="submit" value="Delete" class="btn btn-info btn-block">
-							<button type="button" onClick="closeForm()" class="btn btn-info btn-block">Close</button></td>
+							<button type="button" onClick="closeForm()" class="btn btn-info btn-block">Close</button>
 			    		
 			    		</form>
 			    	</div>

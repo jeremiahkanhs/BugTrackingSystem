@@ -98,13 +98,14 @@ public class BugDAOImpl implements BugDAO{
 	public void updateBug(Bug bug) {
 		try {
 			con = MyConnectionProvider.getCon();
-			ps = con.prepareStatement("update bugs set user_assigner_id = ?,  user_assignee_id = ?, bug_title = ?, bug_desc = ?, bug_severity = ?, bug_status = ?");
+			ps = con.prepareStatement("update bugs set user_assigner_id = ?,  user_assignee_id = ?, bug_title = ?, bug_desc = ?, bug_severity = ?, bug_status = ? where bug_id = ?");
 			ps.setInt(1, bug.getBugAssigner());
 			ps.setInt(2, bug.getBugAssignee());
 			ps.setString(3, bug.getBugTitle());
 			ps.setString(4, bug.getBugDesc());
 			ps.setInt(5, bug.getBugSeverity());
 			ps.setString(6, bug.getBugStatus());
+			ps.setInt(7, bug.getBugId());
 			ps.executeUpdate();
 			con.close();
 		} catch (Exception e) {

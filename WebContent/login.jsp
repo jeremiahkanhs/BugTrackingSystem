@@ -20,8 +20,8 @@
 	<main class="login-form">
     <div class="cotainer">
         <div class="row justify-content-center">
-        	<div class="class="col-md-12">
-       			<h3>${errorMessage}</h3>
+        	<div class="col-md-12">
+       			<h3 style="text-align:center">${errorMessage}</h3>
        		</div>
             <div class="col-md-8">
                 <div class="card">
