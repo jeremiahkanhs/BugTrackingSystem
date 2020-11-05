@@ -57,7 +57,7 @@ public class UserPanelController extends HttpServlet{
 			
 			User check = ud.checkDuplicate(username, emailAddress);
 			
-			if (check == null) {
+			if (check.getEmailAddress() == null && check.getUsername() == null) {
 				User u = new User();
 				u.setEmailAddress(emailAddress);
 				u.setFirstName(firstName);
