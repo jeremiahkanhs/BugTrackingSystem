@@ -205,5 +205,28 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return userList;
 	}
+	
+	@Override
+	public User checkDuplicate(String username, String emailAddress) {
+		User u = new User();
+		try {
+			con = MyConnectionProvider.getCon();
+			ps = con.prepareStatement("select * from users u where u.username = ? or u.email_address = ?");
+			ps.setString(1, username);
+			ps.setString(2, emailAddress);
+			
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				System.out.println (rs.getString(2) + " " + rs.getString(7));
+				u.setUsername(rs.getString(2));
+				u.setEmailAddress(rs.getString(7));
+			}
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return u;
+	}
 
 }
