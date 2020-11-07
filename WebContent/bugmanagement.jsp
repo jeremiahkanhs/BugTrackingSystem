@@ -205,6 +205,10 @@ ul.timeline > li:before {
 							<textarea id="commentdescription" name="commentdescription" class="form-control" rows="5" required></textarea>
 						</div>
 					</div>
+					<%
+						System.out.println(session.getAttribute("userId"));
+					%>
+					<input type="hidden" id="commentuserid" name="commentuserid" value="<%=(Integer)session.getAttribute("userId")%>">
 					
 					<div class="row">
 					    <div class="col-lg-12">

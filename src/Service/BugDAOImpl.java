@@ -3,6 +3,8 @@ package Service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import DAO.BugDAO;
 import Model.Bug;
@@ -63,6 +65,46 @@ public class BugDAOImpl implements BugDAO{
 		}
 		return b;
 	}
+	
+	@Override
+	public List<Integer> getBugsReportedSixMonths() {
+		
+		List <Integer> bugList = new ArrayList <Integer>();
+		try {
+			con = MyConnectionProvider.getCon();
+			ps = con.prepareStatement("select count(*) bugcount from bugs GROUP BY YEAR(bug_created_date), MONTH(bug_created_date) order by bug_created_date desc LIMIT 6");
+			
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				bugList.add(Integer.parseInt(rs.getString(1)));
+			}
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return bugList;
+	}
+	
+	@Override
+	public List<Integer> getBugsClosedSixMonths() {
+		
+		List <Integer> bugList = new ArrayList <Integer>();
+		try {
+			con = MyConnectionProvider.getCon();
+			ps = con.prepareStatement("select count(*) bugcount from bugs GROUP BY YEAR(bug_closed_date), MONTH(bug_closed_date) order by bug_closed_date desc LIMIT 6");
+			
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				bugList.add(Integer.parseInt(rs.getString(1)));
+			}
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return bugList;
+	}
 
 	@Override
 	public int insertBug(Bug bug) {
@@ -78,7 +120,7 @@ public class BugDAOImpl implements BugDAO{
 					bug_id = Integer.parseInt(rs.getString(1)) + 1;
 			}
 			
-			ps = con.prepareStatement("insert into bugs (user_assigner_id, user_assignee_id, bug_title, bug_desc, bug_severity, bug_status, bug_id) value (?, ?, ?, ?, ?, ?, ?)");
+			ps = con.prepareStatement("insert into bugs (user_assigner_id, user_assignee_id, bug_title, bug_desc, bug_severity, bug_status, bug_id, bug_created_date) values (?, ?, ?, ?, ?, ?, ?, ?)");
 			ps.setInt(1, bug.getBugAssigner());
 			ps.setInt(2, bug.getBugAssignee());
 			ps.setString(3, bug.getBugTitle());
@@ -86,6 +128,7 @@ public class BugDAOImpl implements BugDAO{
 			ps.setInt(5, bug.getBugSeverity());
 			ps.setString(6, bug.getBugStatus());
 			ps.setInt(7, bug_id);
+			ps.setString(8,  bug.getBugCreatedDate());
 			ps.executeUpdate();
 			con.close();
 		} catch (Exception e) {
@@ -98,7 +141,7 @@ public class BugDAOImpl implements BugDAO{
 	public void updateBug(Bug bug) {
 		try {
 			con = MyConnectionProvider.getCon();
-			ps = con.prepareStatement("update bugs set user_assigner_id = ?,  user_assignee_id = ?, bug_title = ?, bug_desc = ?, bug_severity = ?, bug_status = ? where bug_id = ?");
+			ps = con.prepareStatement("update bugs set user_assigner_id = ?,  user_assignee_id = ?, bug_title = ?, bug_desc = ?, bug_severity = ?, bug_status = ?, bug_closed_date = ? where bug_id = ?");
 			ps.setInt(1, bug.getBugAssigner());
 			ps.setInt(2, bug.getBugAssignee());
 			ps.setString(3, bug.getBugTitle());
@@ -106,6 +149,7 @@ public class BugDAOImpl implements BugDAO{
 			ps.setInt(5, bug.getBugSeverity());
 			ps.setString(6, bug.getBugStatus());
 			ps.setInt(7, bug.getBugId());
+			ps.setString(8, bug.getBugClosedDate());
 			ps.executeUpdate();
 			con.close();
 		} catch (Exception e) {

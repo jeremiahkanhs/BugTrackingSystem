@@ -18,6 +18,26 @@ public class Bug {
 	
 	private Comment bugComment;
 	
+	private String bugCreatedDate;
+	
+	private String bugClosedDate;
+	
+	public String getBugCreatedDate() {
+		return bugCreatedDate;
+	}
+
+	public void setBugCreatedDate(String bugCreatedDate) {
+		this.bugCreatedDate = bugCreatedDate;
+	}
+
+	public String getBugClosedDate() {
+		return bugClosedDate;
+	}
+
+	public void setBugClosedDate(String bugClosedDate) {
+		this.bugClosedDate = bugClosedDate;
+	}
+
 	public Comment getBugComment() {
 		return bugComment;
 	}

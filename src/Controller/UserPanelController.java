@@ -55,24 +55,16 @@ public class UserPanelController extends HttpServlet{
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			
-			User check = ud.checkDuplicate(username, emailAddress);
+			User u = new User();
+			u.setEmailAddress(emailAddress);
+			u.setFirstName(firstName);
+			u.setLastName(lastName);
+			u.setUsername(username);
+			u.setPassword(password);
 			
-			if (check.getEmailAddress() == null && check.getUsername() == null) {
-				User u = new User();
-				u.setEmailAddress(emailAddress);
-				u.setFirstName(firstName);
-				u.setLastName(lastName);
-				u.setUsername(username);
-				u.setPassword(password);
-				
-				Role r = rd.getRole(userRole);
-				u.setUserRole(r);
-				ud.insertUser(u);
-			}
-			else {
-				request.setAttribute("errorMessage", "Duplicate Username Or Email Address.");
-				request.getRequestDispatcher("register.jsp").forward(request, response);
-			}
+			Role r = rd.getRole(userRole);
+			u.setUserRole(r);
+			ud.insertUser(u);
 		}
 		
 		request.getRequestDispatcher("adminpanel.jsp").forward(request, response);

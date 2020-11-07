@@ -106,6 +106,7 @@ body{
                 <%try{if(session.getAttribute("roleId").toString().equals("191")) {%><li class="nav-item"><a class="nav-link" href="adminpanel.jsp">Admin Panel</a></li><%}}catch (Exception e){} %>
                 <%try{if(!session.getAttribute("roleId").toString().equals("191") && session.getAttribute("roleId") != null) {%><li class="nav-item"><a class="nav-link" href="dashboard.jsp">Dashboard</a></li><%}}catch (Exception e){} %>
                 <%try{if(session.getAttribute("roleId").toString().equals("192")) {%><li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/BugManagement?roleId=<%=session.getAttribute("roleId")%>" id="bugManagement">Report Bug</a></li><%}}catch (Exception e){} %>
+                <%try{if(session.getAttribute("roleId") != null) {%><li class="nav-item"><a class="nav-link" href="report.jsp">Reports</a></li><%}}catch (Exception e){} %>
                 <%try{if(session.getAttribute("roleId") != null) {%><li class="nav-item"><a class="nav-link" href="logout.jsp" id="logout">LogOut</a></li><%}}catch (Exception e){} %>
 
             </ul>

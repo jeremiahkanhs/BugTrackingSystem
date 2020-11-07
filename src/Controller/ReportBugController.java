@@ -39,7 +39,9 @@ public class ReportBugController extends HttpServlet {
 		}
 		String bugDesc = request.getParameter("bugdescription");
 		String bugStatus = request.getParameter("bugstatus");
+		
 		String commentDesc = request.getParameter("commentdescription");
+		int commentUserId = Integer.parseInt(request.getParameter("commentuserid"));
 		String bugId = request.getParameter("bugid");
 		
 		Bug b = new Bug();
@@ -55,21 +57,28 @@ public class ReportBugController extends HttpServlet {
 	    LocalDateTime now = LocalDateTime.now();  
 		c.setCommentDesc(commentDesc);
 		c.setCommentDate(dtf.format(now));
-		if (bugAssignee == 9999)
-			c.setUserId(b.getBugAssignee());
-		else
-			c.setUserId(b.getBugAssigner());
+		c.setUserId(commentUserId);
+//		if (bugAssignee == 9999)
+//			c.setUserId(b.getBugAssignee());
+//		else
+//			c.setUserId(b.getBugAssigner());
 		
 		b.setBugComment(c);
 		
 		
+		
 		//Creating bug - Bug Reporter
 		if (bugId == null) {
+			b.setBugCreatedDate(dtf.format(now));
+			System.out.println ("I am here " + b.getBugCreatedDate());
 			int currBugId = bd.insertBug(b);
 			c.setBugId(currBugId);
 			cd.insertComment(c);
 		}
 		else if (bugId != null) {
+			if (bugStatus.equals("closed")) {
+				b.setBugClosedDate(dtf.format(now));
+			}
 			c.setBugId(Integer.parseInt(bugId));
 			b.setBugId(Integer.parseInt(bugId));
 			bd.updateBug(b);

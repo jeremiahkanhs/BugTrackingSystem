@@ -21,7 +21,7 @@ public class UserDAOImpl implements UserDAO {
 		int status = 0;
 		try {
 			con = MyConnectionProvider.getCon();
-			ps = con.prepareStatement("insert into users (username, password, role_id, first_name, last_name, email_address) value (?, ?, ?, ?, ?, ?)");
+			ps = con.prepareStatement("insert into users (username, password, role_id, first_name, last_name, email_address) values (?, ?, ?, ?, ?, ?)");
 			ps.setString(1, u.getUsername());
 			ps.setString(2, u.getPassword());
 			ps.setInt(3, u.getUserRole().getRoleId());
@@ -49,6 +49,7 @@ public class UserDAOImpl implements UserDAO {
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				System.out.println (rs.getString(2) + " " + rs.getString(3));
+				u.setUserId(Integer.parseInt(rs.getString(1)));
 				u.setUsername(rs.getString(2));
 				u.setPassword(rs.getString(3));
 				r.setRoleId(Integer.parseInt(rs.getString(4)));
@@ -178,28 +179,31 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return userList;
 	}
-
+	
 	@Override
-	public User checkDuplicate(String username, String emailAddress) {
-		User u = new User();
+	public List <String> getTopTenDevelopers() {
+		List<String> userList = new ArrayList<>();
 		try {
 			con = MyConnectionProvider.getCon();
-			ps = con.prepareStatement("select * from users u where u.username = ? and u.email_address = ?");
-			ps.setString(1, username);
-			ps.setString(2, emailAddress);
+			ps = con.prepareStatement("select count(*), c.user_id from bugs b inner join comments c on b.bug_id = c.bug_id where c.user_id in "
+										+ "(select u.user_id from users u where role_id = 194) group by c.user_id order by c.user_id desc limit 10");
 			
 			ResultSet rs = ps.executeQuery();
+			int count;
+			String name;
 			while(rs.next()) {
-				System.out.println (rs.getString(2) + " " + rs.getString(7));
-				u.setUsername(rs.getString(2));
-				u.setEmailAddress(rs.getString(7));
+				count = Integer.parseInt(rs.getString(1));
+				name = getUser(Integer.parseInt(rs.getString(2))).getFirstName() + getUser(Integer.parseInt(rs.getString(2))).getLastName();
+				userList.add(name);
+				userList.add(Integer.toString(count));
+				
 			}
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
-		return u;
+		return userList;
 	}
 
 }
