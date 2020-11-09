@@ -3,7 +3,7 @@ pipeline {
 	stages {
 		stage ('Compilation') {
 			steps {
-				sh 'javac *.java'
+				bat 'javac *.java'
 			}
 		}
 		stage ('Testing') {
