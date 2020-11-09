@@ -1,6 +1,5 @@
 pipeline {
 	agent any
-	
 	stages {
 		stage ('Compilation') {
 			steps {
@@ -8,7 +7,7 @@ pipeline {
 			}
 		}
 		stage ('Testing') {
-			
+			echo 'Hello World'
 		}
 	}
 }
