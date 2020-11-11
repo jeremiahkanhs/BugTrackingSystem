@@ -2,6 +2,7 @@ package Utilities;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class MyConnectionProvider implements MyProvider {
 	
@@ -16,4 +17,8 @@ public class MyConnectionProvider implements MyProvider {
 		}
 		return con;
 	}
+	
+	 public int executeQuery(String query) throws ClassNotFoundException, SQLException {
+		    return con.createStatement().executeUpdate(query);
+	 }
 }

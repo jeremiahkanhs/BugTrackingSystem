@@ -148,8 +148,8 @@ public class BugDAOImpl implements BugDAO{
 			ps.setString(4, bug.getBugDesc());
 			ps.setInt(5, bug.getBugSeverity());
 			ps.setString(6, bug.getBugStatus());
-			ps.setInt(7, bug.getBugId());
-			ps.setString(8, bug.getBugClosedDate());
+			ps.setString(7, bug.getBugClosedDate());
+			ps.setInt(8, bug.getBugId());
 			ps.executeUpdate();
 			con.close();
 		} catch (Exception e) {

@@ -1,8 +1,6 @@
 package Controller;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,12 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import DAO.BugDAO;
-import DAO.CommentDAO;
 import DAO.UserDAO;
-import Model.Bug;
-import Model.Comment;
 import Service.BugDAOImpl;
-import Service.CommentDAOImpl;
 import Service.UserDAOImpl;
 
 /**

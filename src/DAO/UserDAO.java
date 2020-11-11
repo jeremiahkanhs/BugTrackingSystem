@@ -14,5 +14,4 @@ public interface UserDAO {
 	public void updateUser (User u);
 	public void deleteUser (String username);
 	public List <String> getTopTenDevelopers();
-	public User checkDuplicate(String username, String emailAddress);
 }

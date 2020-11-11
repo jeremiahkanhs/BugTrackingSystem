@@ -185,8 +185,8 @@ public class UserDAOImpl implements UserDAO {
 		List<String> userList = new ArrayList<>();
 		try {
 			con = MyConnectionProvider.getCon();
-			ps = con.prepareStatement("select count(*), c.user_id from bugs b inner join comments c on b.bug_id = c.bug_id where c.user_id in "
-										+ "(select u.user_id from users u where role_id = 194) group by c.user_id order by c.user_id desc limit 10");
+			ps = con.prepareStatement("select count(*) usercount, c.user_id from bugs b inner join comments c on b.bug_id = c.bug_id where c.user_id in "
+										+ "(select u.user_id from users u where role_id = 194) group by c.user_id order by usercount desc limit 10");
 			
 			ResultSet rs = ps.executeQuery();
 			int count;
@@ -204,29 +204,6 @@ public class UserDAOImpl implements UserDAO {
 			return null;
 		}
 		return userList;
-	}
-	
-	@Override
-	public User checkDuplicate(String username, String emailAddress) {
-		User u = new User();
-		try {
-			con = MyConnectionProvider.getCon();
-			ps = con.prepareStatement("select * from users u where u.username = ? or u.email_address = ?");
-			ps.setString(1, username);
-			ps.setString(2, emailAddress);
-			
-			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
-				System.out.println (rs.getString(2) + " " + rs.getString(7));
-				u.setUsername(rs.getString(2));
-				u.setEmailAddress(rs.getString(7));
-			}
-			con.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-		return u;
 	}
 
 }

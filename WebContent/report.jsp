@@ -45,12 +45,12 @@ $(document).ready(function() {
 				    {        
 				        type: "column",
 				        dataPoints: [//array
-					        { y: parseInt(returnedData[11], 10), label: xaxis[5]},
-					        { y: parseInt(returnedData[9], 10), label: xaxis[4]},
-					        { y: parseInt(returnedData[7], 10), label: xaxis[3]},
-					        { y: parseInt(returnedData[5], 10), label: xaxis[2]},
-					        { y: parseInt(returnedData[3], 10), label: xaxis[1]},
-					        { y: parseInt(returnedData[1], 10), label: xaxis[0]}
+					        { y: parseInt(returnedData[5], 10), label: xaxis[5]},
+					        { y: parseInt(returnedData[4], 10), label: xaxis[4]},
+					        { y: parseInt(returnedData[3], 10), label: xaxis[3]},
+					        { y: parseInt(returnedData[2], 10), label: xaxis[2]},
+					        { y: parseInt(returnedData[1], 10), label: xaxis[1]},
+					        { y: parseInt(returnedData[0], 10), label: xaxis[0]}
 				        ]
 				    }
 				    ]
